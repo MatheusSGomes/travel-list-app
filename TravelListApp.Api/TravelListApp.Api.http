@@ -4,3 +4,6 @@ GET {{TravelListApp.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{TravelListApp.Api_HostAddress}}/api/Travel
+Accept: application/json
