@@ -16,7 +16,7 @@ public class TravelController : Controller
     [HttpGet]
     [Route("{travelId}")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-    public IActionResult GetById([FromRoute] int travelId)
+    public IActionResult GetById([FromRoute] Guid travelId)
     {
         return Ok("Get Travel By Id: " + travelId);
     }
