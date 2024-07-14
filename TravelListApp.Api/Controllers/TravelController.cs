@@ -7,8 +7,17 @@ namespace TravelListApp.Api.Controllers;
 public class TravelController : Controller
 {
     [HttpGet]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     public IActionResult GetAll()
     {
         return Ok("Get All Travels");
+    }
+
+    [HttpGet]
+    [Route("{travelId}")]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    public IActionResult GetById([FromRoute] int travelId)
+    {
+        return Ok("Get Travel By Id: " + travelId);
     }
 }
