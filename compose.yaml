@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5000:5432'
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=travels
+    volumes:
+      - travels_pg_data:/bitnami/postgresql
+volumes:
+  travels_pg_data:
