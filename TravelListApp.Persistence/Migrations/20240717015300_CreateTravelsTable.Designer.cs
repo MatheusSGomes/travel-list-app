@@ -12,8 +12,8 @@ using TravelListApp.Persistence.Contexts;
 namespace TravelListApp.Persistence.Migrations
 {
     [DbContext(typeof(TravelListDbContext))]
-    [Migration("20240716022401_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240717015300_CreateTravelsTable")]
+    partial class CreateTravelsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,7 +46,7 @@ namespace TravelListApp.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Travels");
+                    b.ToTable("travels", (string)null);
                 });
 #pragma warning restore 612, 618
         }

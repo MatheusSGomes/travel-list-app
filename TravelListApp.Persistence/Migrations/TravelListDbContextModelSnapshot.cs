@@ -43,7 +43,7 @@ namespace TravelListApp.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Travels");
+                    b.ToTable("travels", (string)null);
                 });
 #pragma warning restore 612, 618
         }
