@@ -1,17 +1,22 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using TravelListApp.Domain.Entities;
 
 namespace TravelListApp.Persistence.Contexts;
 
-public class TravelListDbContext : DbContext
+public class  TravelListDbContext : DbContext
 {
-    public DbSet<Travel> Travels { get; set; }
-    
-    public TravelListDbContext(DbContextOptions<TravelListDbContext> options) : base(options) { }
+    private readonly IConfiguration _configuration;
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public DbSet<Travel> Travels { get; set; }
+
+    public TravelListDbContext(IConfiguration configuration)
     {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Travel>().ToTable("travels");
+        _configuration = configuration;
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
     }
 }
