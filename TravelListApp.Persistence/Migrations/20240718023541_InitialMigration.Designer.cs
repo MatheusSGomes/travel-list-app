@@ -12,8 +12,8 @@ using TravelListApp.Persistence.Contexts;
 namespace TravelListApp.Persistence.Migrations
 {
     [DbContext(typeof(TravelListDbContext))]
-    [Migration("20240717015300_CreateTravelsTable")]
-    partial class CreateTravelsTable
+    [Migration("20240718023541_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,24 +29,29 @@ namespace TravelListApp.Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<decimal>("Cost")
-                        .HasColumnType("numeric");
+                        .HasColumnType("numeric")
+                        .HasColumnName("cost");
 
                     b.Property<string>("Destination")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("destination");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("end_date");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("start_date");
 
                     b.HasKey("Id");
 
-                    b.ToTable("travels", (string)null);
+                    b.ToTable("travels", "public");
                 });
 #pragma warning restore 612, 618
         }
